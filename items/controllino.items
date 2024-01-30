@@ -1,0 +1,29 @@
+/* Relays */
+Switch      Licht_Eingang           "Licht Eingangtür"      <Light>     (Aussen, Licht)         { channel="mqtt:topic:paulino:R0" }
+Switch      Licht_Flur_EG           "Licht Flur EG"         <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R1" }
+Switch      Licht_WC                "Licht WC"              <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R2" }
+Switch      Licht_HWR               "Licht HWR"             <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R3" }
+Switch      Licht_Wohnen_Kueche     "Licht Wohnen Küche"    <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R4" }
+Switch      Licht_Wohnen            "Licht Wohnen"          <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R5" }
+Switch      Licht_Wohnen_Treppe     "Licht Wohnen Treppe"   <Light>     (Erdgeschoss, Licht)    { channel="mqtt:topic:paulino:R6" }
+Switch      Licht_Zimmer1           "Licht Zimmer 1"        <Light>     (Obergeschoss, Licht)   { channel="mqtt:topic:paulino:R7" }
+Switch      Licht_Zimmer2           "Licht Zimmer 2"        <Light>     (Obergeschoss, Licht)   { channel="mqtt:topic:paulino:R8" }
+Switch      Licht_Schlafen          "Licht Schlafen"        <Light>     (Obergeschoss, Licht)   { channel="mqtt:topic:paulino:R9" }
+Switch      Licht_Bad               "Licht Bad"             <Light>     (Obergeschoss, Licht)   { channel="mqtt:topic:paulino:R10" }
+Switch      Licht_Flur_OG           "Licht Flur OG"         <Light>     (Obergeschoss, Licht)   { channel="mqtt:topic:paulino:R11" }
+Switch      Licht_Terrasse          "Licht Terrasse"        <Light>     (Aussen, Licht)         { channel="mqtt:topic:paulino:R12" }
+Switch      Licht_Dachboden         "Licht Dachboden"       <Light>     (Dachgeschoss, Licht)   { channel="mqtt:topic:paulino:R13" }
+
+Switch      Tuer_Oeffner            "Türöffner"                           <frontdoor> (Erdgeschoss)           { channel="mqtt:topic:paulino:D0" }
+Switch      H_Stellantrieb_Zimmer1    "Heizung Stellantrieb Zimmer 1"     <switch>  (Obergeschoss, Heizung) { channel="mqtt:topic:paulino:D1" }
+Switch      H_Stellantrieb_Zimmer2A   "Heizung Stellantrieb Zimmer 2A"    <switch>  (Obergeschoss, Heizung) { channel="mqtt:topic:paulino:D2" }
+Switch      H_Stellantrieb_Zimmer2B   "Heizung Stellantrieb Zimmer 2B"    <switch>  (Obergeschoss, Heizung) { channel="mqtt:topic:paulino:D3" }
+Switch      H_Stellantrieb_Schalfen   "Heizung Stellantrieb Schalfen"     <switch>  (Obergeschoss, Heizung) { channel="mqtt:topic:paulino:D4" }
+Switch      H_Stellantrieb_Bad        "Heizung Stellantrieb Bad"          <switch>  (Obergeschoss, Heizung) { channel="mqtt:topic:paulino:D5" }
+Switch      H_Stellantrieb_HWR        "Heizung Stellantrieb HWR"          <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D6" }
+Switch      H_Stellantrieb_Flur       "Heizung Stellantrieb Flur"         <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D7" }
+Switch      H_Stellantrieb_WC         "Heizung Stellantrieb WC"           <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D8" }
+Switch      H_Stellantrieb_Kueche     "Heizung Stellantrieb Küche"        <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D9" }
+Switch      H_Stellantrieb_WohnenA    "Heizung Stellantrieb Wohnen A"     <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D10" }
+Switch      H_Stellantrieb_WohnenB    "Heizung Stellantrieb Wohnen B"     <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D11" }
+Switch      H_Stellantrieb_WohnenC    "Heizung Stellantrieb Wohnen C"     <switch>  (Erdgeschoss, Heizung)  { channel="mqtt:topic:paulino:D12" }

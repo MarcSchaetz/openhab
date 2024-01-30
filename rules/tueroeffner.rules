@@ -1,0 +1,19 @@
+var Timer timer_tueroeffner = null
+
+rule "Türöffner ausschalten"
+when
+    Item Tuer_Oeffner changed
+then
+    if (Tuer_Oeffner.state == ON) {
+        if (timer_tueroeffner !== null) {
+            timer_tueroeffner.reschedule(now.plusSeconds(10))
+        } else {
+            myTimer = createTimer(now.plusSeconds(10), [ |
+                Tuer_Oeffner.sendCommand(OFF)
+            ])
+        }
+    } else {
+        myTimer?.cancel()
+        myTimer = null
+    }
+end

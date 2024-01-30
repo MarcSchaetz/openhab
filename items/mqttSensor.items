@@ -1,0 +1,21 @@
+// Temperaturen
+Number:Temperature          Temp_WC         "Temperatur WC [%.1f °C]"         <temperature> (Erdgeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_WC" }
+Number:Temperature          Temp_Flur       "Temperatur Flur [%.1f °C]"       <temperature> (Erdgeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Flur" }
+Number:Temperature          Temp_Wohnen     "Temperatur Wohnen [%.1f °C]"     <temperature> (Erdgeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Wohnen" }
+Number:Temperature          Temp_HWR        "Temperatur HWR [%.1f °C]"        <temperature> (Erdgeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_HWR" }
+Number:Temperature          Temp_Zimmer1    "Temperatur Zimmer1 [%.1f °C]"    <temperature> (Obergeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Zimmer1" }
+Number:Temperature          Temp_Zimmer2    "Temperatur Zimmer 2 [%.1f °C]"   <temperature> (Obergeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Zimmer2" }
+Number:Temperature          Temp_Schlafen   "Temperatur Schlafen [%.1f °C]"   <temperature> (Obergeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Schlafen" }
+Number:Temperature          Temp_Bad        "Temperatur Bad [%.1f °C]"        <temperature> (Obergeschoss, Temperatur_Sensoren) { channel="mqtt:topic:sensor:Temp_Bad" }
+// Luftfeuchte
+Number                      Feuchte_WC      "Luftfeuchte WC [%.1f %%]"        <humidity> (Erdgeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_WC" }
+Number                      Feuchte_Flur    "Luftfeuchte Flur [%.1f %%]"      <humidity> (Erdgeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Flur" }
+Number                      Feuchte_Wohnen  "Luftfeuchte Wohnen [%.1f %%]"    <humidity> (Erdgeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Wohnen" }
+Number                      Feuchte_HWR     "Luftfeuchte HWR [%.1f %%]"       <humidity> (Erdgeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_HWR" }
+Number                      Feuchte_Zimmer1 "Luftfeuchte Zimmer1 [%.1f %%]"   <humidity> (Obergeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Zimmer1" }
+Number                      Feuchte_Zimmer2 "Luftfeuchte Zimmer 2 [%.1f %%]"  <humidity> (Obergeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Zimmer2" }
+Number                      Feuchte_Schlafen "Luftfeuchte Schlafen [%.1f %%]" <humidity> (Obergeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Schlafen" }
+Number                      Feuchte_Bad     "Luftfeuchte Bad [%.1f %%]"       <humidity> (Obergeschoss, Luftfeuchte_Sensoren) { channel="mqtt:topic:sensor:Feuchte_Bad" }
+// Bewegung
+Switch      Bewegung_Flur   "Bewegung Flur"         <motion>    (Erdgeschoss, Bewegungsmelder) { channel="mqtt:topic:sensor:Bewegung_Flur" [profile="system:range", lower="1.0", upper="10.0"] }
+Switch      Bewegung_HWR    "Bewegung HWR"          <motion>    (Erdgeschoss, Bewegungsmelder) { channel="mqtt:topic:sensor:Bewegung_HWR" [profile="system:range", lower="1.0", upper="10.0"] }

@@ -1,0 +1,1 @@
+Bridge mqtt:broker:localBroker [host="localhost", username="openhabian", password="3X3BAxTwZPs"]

@@ -1,0 +1,20 @@
+// shelly plus i4
+Thing shelly:shellyplusi4:XXXX10 "Shelly Plus i4, XXXX10" @ "WC" [deviceIp="192.168.2.10", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX11 "Shelly Plus i4, XXXX11" @ "Flur EG" [deviceIp="192.168.2.11", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX12 "Shelly Plus i4, XXXX12" @ "Flur EG" [deviceIp="192.168.2.12", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX13 "Shelly Plus i4, XXXX13" @ "HWR" [deviceIp="192.168.2.13", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX14 "Shelly Plus i4, XXXX14" @ "Wohnen" [deviceIp="192.168.2.14", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX15 "Shelly Plus i4, XXXX15" @ "Wohnen" [deviceIp="192.168.2.15", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX16 "Shelly Plus i4, XXXX16" @ "Wohnen" [deviceIp="192.168.2.16", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX17 "Shelly Plus i4, XXXX17" @ "Wohnen" [deviceIp="192.168.2.17", userId="", password=""]
+// not installed: Thing shelly:shellyplusi4:XXXX18 "Shelly Plus i4, XXXX18" @ "Wohnen" [deviceIp="192.168.2.18", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX19 "Shelly Plus i4, XXXX19" @ "Wohnen" [deviceIp="192.168.2.19", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX20 "Shelly Plus i4, XXXX20" @ "Flur OG" [deviceIp="192.168.2.20", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX21 "Shelly Plus i4, XXXX21" @ "Zimmer 1" [deviceIp="192.168.2.21", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX22 "Shelly Plus i4, XXXX22" @ "Zimmer 2" [deviceIp="192.168.2.22", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX23 "Shelly Plus i4, XXXX23" @ "Schlafen" [deviceIp="192.168.2.23", userId="", password=""]
+Thing shelly:shellyplusi4:XXXX24 "Shelly Plus i4, XXXX24" @ "Bad" [deviceIp="192.168.2.24", userId="", password=""]
+
+// shelly 2PM
+Thing shelly:shellyplus2pm-roller:XXXX30 "Shelly Plus 2PM Roller, XXXX30" @ "Wohnen" [deviceIp="192.168.2.30", userId="", password=""]
+Thing shelly:shellyplus2pm-roller:XXXX31 "Shelly Plus 2PM Roller, XXXX31" @ "Bad" [deviceIp="192.168.2.31", userId="", password=""]

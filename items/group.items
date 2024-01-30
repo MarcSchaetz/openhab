@@ -1,0 +1,16 @@
+// Overarching group
+Group Haus <group>
+// Location perspective
+Group Aussen <garden> (Haus)
+Group Erdgeschoss <groundfloor> (Haus)
+Group Obergeschoss <firstfloor> (Haus)
+Group Dachgeschoss <attic> (Haus)
+// Functional perspective
+Group Licht <light> (Haus)
+Group Sensoren    (Haus)
+Group Temperatur_Sensoren <temperature> (Sensoren)
+Group Luftfeuchte_Sensoren <humidity> (Sensoren)
+Group Bewegungsmelder <motion> (Sensoren)
+Group Rollos <rollershutter> (Haus)
+Group Heizung <radiator> (Haus)
+Group Ventil <softener> (Haus)

@@ -1,0 +1,110 @@
+rule "Licht Außentür"
+when
+  Channel "shelly:shellyplusi4:XXXX11:status2#button" triggered
+then
+    Licht_Eingang.sendCommand(if(Licht_Eingang.state != ON) ON else OFF)
+end
+
+rule "Licht Flur EG"
+when
+  Channel "shelly:shellyplusi4:XXXX11:status1#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX12:status2#button" triggered
+then
+    Licht_Flur_EG.sendCommand(if(Licht_Flur_EG.state != ON) ON else OFF)
+end
+
+rule "Licht WC"
+when
+  Channel "shelly:shellyplusi4:XXXX10:status1#button" triggered SHORT_PRESSED
+then
+    Licht_WC.sendCommand(if(Licht_WC.state != ON) ON else OFF)
+end
+
+rule "Licht HWR"
+when
+  Channel "shelly:shellyplusi4:XXXX12:status1#button" triggered SHORT_PRESSED
+then
+    Licht_HWR.sendCommand(if(Licht_HWR.state != ON) ON else OFF)
+end
+
+rule "Licht Wohnen Küche"
+when
+  Channel "shelly:shellyplusi4:XXXX14:status4#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX15:status4#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX17:status1#button" triggered or 
+  Channel "shelly:shellyplusi4:XXXX19:status1#button" triggered
+then
+    Licht_Wohnen_Kueche.sendCommand(if(Licht_Wohnen_Kueche.state != ON) ON else OFF)
+end
+
+rule "Licht Wohnen"
+when
+  Channel "shelly:shellyplusi4:XXXX14:status3#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX16:status2#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX17:status3#button" triggered or 
+  Channel "shelly:shellyplusi4:XXXX19:status4#button" triggered
+then
+    Licht_Wohnen.sendCommand(if(Licht_Wohnen.state != ON) ON else OFF)
+end
+
+rule "Licht Wohnen Treppe"
+when
+  Channel "shelly:shellyplusi4:XXXX14:status2#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX15:status2#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX17:status2#button" triggered
+then
+    Licht_Wohnen_Treppe.sendCommand(if(Licht_Wohnen_Treppe.state != ON) ON else OFF)
+end
+
+rule "Licht Zimmer 1"
+when
+  Channel "shelly:shellyplusi4:XXXX21:status1#button" triggered
+then
+    Licht_Zimmer1.sendCommand(if(Licht_Zimmer1.state != ON) ON else OFF)
+end
+
+rule "Licht Zimmer 2"
+when
+  Channel "shelly:shellyplusi4:XXXX22:status1#button" triggered
+then
+    Licht_Zimmer2.sendCommand(if(Licht_Zimmer2.state != ON) ON else OFF)
+end
+
+rule "Licht Schlafen"
+when
+  Channel "shelly:shellyplusi4:XXXX23:status1#button" triggered
+then
+    Licht_Schlafen.sendCommand(if(Licht_Schlafen.state != ON) ON else OFF)
+end
+
+rule "Licht Bad"
+when
+  Channel "shelly:shellyplusi4:XXXX24:status1#button" triggered
+then
+    Licht_Bad.sendCommand(if(Licht_Bad.state != ON) ON else OFF)
+end
+
+rule "Licht Flur OG"
+when
+  Channel "shelly:shellyplusi4:XXXX14:status1#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX24:status3#button" triggered or
+  Channel "shelly:shellyplusi4:XXXX20:status1#button" triggered SHORT_PRESSED
+then
+    Licht_Flur_OG.sendCommand(if(Licht_Flur_OG.state != ON) ON else OFF)
+end
+
+rule "Licht Terrasse"
+when
+  Channel "shelly:shellyplusi4:XXXX17:status4#button" triggered or 
+  Channel "shelly:shellyplusi4:XXXX16:status1#button" triggered 
+then
+    Licht_Terrasse.sendCommand(if(Licht_Terrasse.state != ON) ON else OFF)
+end
+
+rule "Licht Dachboden"
+when
+  Channel "shelly:shellyplusi4:XXXX20:status1#button" triggered LONG_PRESSED
+then
+    Licht_Dachboden.sendCommand(if(Licht_Dachboden.state != ON) ON else OFF)
+end
+

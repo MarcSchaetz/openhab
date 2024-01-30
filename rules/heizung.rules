@@ -1,0 +1,93 @@
+rule "Heizungssteuerung (PWM 600s/10min)"
+when
+    Time cron "*/6 * * * * * *"
+then
+
+    if(H_Steuerung_Aktiv.state == OFF){
+        return logInfo("Heizung", "Steuerung deaktiviert.")
+    }
+    if(H_Ventilprogramm_Aktiv.state == ON){
+        return logInfo("Heizung", "Ventilprogramm aktiv.")
+    }
+
+    val long epoch = now.toInstant.toEpochMilli / 1000 // milli to seconds
+    val interval = (epoch % 600) / 6 // 1..100 intervals 
+    val stellantriebe = newArrayList( H_Stellantrieb_HWR, H_Stellantrieb_Flur, H_Stellantrieb_WC, H_Stellantrieb_Kueche, H_Stellantrieb_WohnenA, H_Stellantrieb_WohnenB, H_Stellantrieb_WohnenC, H_Stellantrieb_Zimmer1, H_Stellantrieb_Zimmer2A, H_Stellantrieb_Zimmer2B, H_Stellantrieb_Schalfen, H_Stellantrieb_Bad )
+    val ventile = newArrayList( H_Ventiloeffnung_HWR, H_Ventiloeffnung_Flur, H_Ventiloeffnung_WC, H_Ventiloeffnung_Kueche, H_Ventiloeffnung_WohnenA, H_Ventiloeffnung_WohnenB, H_Ventiloeffnung_WohnenC, H_Ventiloeffnung_Zimmer1, H_Ventiloeffnung_Zimmer2A, H_Ventiloeffnung_Zimmer2B, H_Ventiloeffnung_Schlafen, H_Ventiloeffnung_Bad )
+    val interval_Offset = 100/ventile.size() // Es sollten kontinierlich Ventile geöffnet sein, daher je Ventil den Einschaltzeitpunkt um den Offset verschieben
+    ventile.forEach[item, i |
+        if(item.state != NULL){
+            val stellwert = (item.state as DecimalType)// range from 0..100
+            val status_Stellantrieb = stellantriebe.get(i).state
+            val local_Interval = 1 + (interval + interval_Offset* i) % 100 // locales Intervall berechen 1..100
+           
+            if(local_Interval <= stellwert && status_Stellantrieb == OFF){
+                stellantriebe.get(i).sendCommand(ON)
+            }
+            if(local_Interval > stellwert && status_Stellantrieb == ON){
+                stellantriebe.get(i).sendCommand(OFF)
+            }
+            
+        }
+    ]
+end
+
+rule "Ventilprogramm (Montags 12:00-12:30 Uhr)"
+when
+    Time cron "0 0-35 12 * * 1"
+then
+
+    // Liste aller Stellantriebe
+    val stellantriebe = newArrayList( H_Stellantrieb_HWR, H_Stellantrieb_Flur, H_Stellantrieb_WC, H_Stellantrieb_Kueche, H_Stellantrieb_WohnenA, H_Stellantrieb_WohnenB, H_Stellantrieb_WohnenC, H_Stellantrieb_Zimmer1, H_Stellantrieb_Zimmer2A, H_Stellantrieb_Zimmer2B, H_Stellantrieb_Schalfen, H_Stellantrieb_Bad )
+    logInfo("Ventilprogramm", "Ventilprogramm aktiv...")
+    // Ventilprogramm aktivieren, damit die Ventilsteuerung nicht aktiv wird
+    if(H_Ventilprogramm_Aktiv.state != ON){
+        logInfo("Ventilprogramm", "Ventilprogramm wird aktiviert.")
+        H_Ventilprogramm_Aktiv.sendCommand(ON)
+    }
+
+    var mm = now().getMinute() // aktuelle Minute
+    // 0 - 15 min - die erste Hälfte der Ventile vollständig schließen, die andere Hälfte vollständig öffnen
+    if( mm <= 15){
+        logInfo("Ventilprogramm", "Ventilprogramm Phase 1.")
+        stellantriebe.forEach[ventil, index |
+            val sollStatus = if(index % 2 == 0) ON else OFF // jeweils abwechseld ein und ausschlaten
+            if(ventil.state != sollStatus) ventil.sendCommand(sollStatus)
+        ]
+    }
+
+    // 15 - 30 min - die erste Hälfte der Ventile vollständig öffnen, die andere Hälfte vollständig schließen
+    if( mm > 15 && mm <= 30){
+        logInfo("Ventilprogramm", "Ventilprogramm Phase 2.")
+        stellantriebe.forEach[ventil, index |
+            val sollStatus = if(index % 2 == 0) OFF else ON  // jeweils abwechseld ein und ausschlaten
+            if(ventil.state != sollStatus) ventil.sendCommand(sollStatus)
+        ]
+    }
+
+    // nach 30 min, dass Ventilprogramm wieder beenden
+    if(mm > 30 && H_Ventilprogramm_Aktiv.state != OFF){
+        logInfo("Ventilprogramm", "Ventilprogramm wird deaktiviert.")
+        H_Ventilprogramm_Aktiv.sendCommand(OFF)
+    }
+
+end
+
+rule "Ventil Wohnen Gesamt"
+when
+  Item H_Ventiloeffnung_Wohnen_Gesamt changed
+then
+    val stellwert = (H_Ventiloeffnung_Wohnen_Gesamt.state as DecimalType)// range from 0..100
+    H_Ventiloeffnung_WohnenA.sendCommand(stellwert)
+    H_Ventiloeffnung_WohnenB.sendCommand(stellwert)
+    H_Ventiloeffnung_WohnenC.sendCommand(stellwert)
+end
+
+rule "Ventil Zimmer 2 Gesamt"
+when
+  Item H_Ventiloeffnung_Zimmer2_Gesamt changed
+then
+    val stellwert = (H_Ventiloeffnung_Zimmer2_Gesamt.state as DecimalType)// range from 0..100
+    H_Ventiloeffnung_Zimmer2A.sendCommand(stellwert)
+    H_Ventiloeffnung_Zimmer2B.sendCommand(stellwert)
+end

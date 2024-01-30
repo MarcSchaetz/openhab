@@ -1,0 +1,53 @@
+
+rule "Roller Wohnzimmer Auf"
+when
+    Channel "shelly:shellyplusi4:XXXX15:status1#button" triggered or
+    Channel "shelly:shellyplusi4:XXXX19:status2#button" triggered
+then
+    if ((Rollo_Wohnen_State.state == "opening") || (Rollo_Wohnen_State.state == "closing")) {
+         Rollo_Wohnen.sendCommand(STOP)
+    }
+    else {
+         Rollo_Wohnen.sendCommand(0)
+    }
+end
+
+
+rule "Roller Wohnzimmer Zu"
+when
+    Channel "shelly:shellyplusi4:XXXX15:status3#button" triggered or
+    Channel "shelly:shellyplusi4:XXXX19:status3#button" triggered
+then
+     if ((Rollo_Wohnen_State.state == "opening") || (Rollo_Wohnen_State.state == "closing")) {
+         Rollo_Wohnen.sendCommand(STOP)
+    }
+    else {
+         Rollo_Wohnen.sendCommand(100)
+    }
+end
+
+
+rule "Roller Bad Auf"
+when
+    Channel "shelly:shellyplusi4:XXXX24:status4#button" triggered
+then
+    if ((Rollo_Bad_State.state == "opening") || (Rollo_Bad_State.state == "closing")) {
+         Rollo_Bad.sendCommand(STOP)
+    }
+    else {
+         Rollo_Bad.sendCommand(0)
+    }
+end
+
+
+rule "Roller Bad Zu"
+when
+    Channel "shelly:shellyplusi4:XXXX24:status2#button" triggered
+then
+   if ((Rollo_Bad_State.state == "opening") || (Rollo_Bad_State.state == "closing")) {
+         Rollo_Bad.sendCommand(STOP)
+    }
+    else {
+         Rollo_Bad.sendCommand(100)
+    }
+end

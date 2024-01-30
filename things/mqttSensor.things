@@ -1,0 +1,24 @@
+Thing mqtt:topic:sensor "MQTT Sensoren" (mqtt:broker:localBroker) {
+    Channels:
+    // Temperatur
+    Type number : Temp_WC "Temperatur WC" [stateTopic="shellyplusi4-WC-10/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Flur "Temperatur Flur" [stateTopic="shellyplusi4-Flur-EG-12/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Wohnen "Temperatur Wohnen" [stateTopic="shellyplusi4-Wohnen-14/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_HWR "Temperatur HWR" [stateTopic="shellyplusi4-HWR-13/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Zimmer1 "Temperatur Zimmer 1" [stateTopic="shellyplusi4-Zimmer1-21/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Zimmer2 "Temperatur Zimmer 2" [stateTopic="shellyplusi4-Zimmer2-22/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Schlafen "Temperatur Schlafen" [stateTopic="shellyplusi4-Schlafen-23/status/temperature:100", transformationPattern="JSONPATH:$.tC"]
+    Type number : Temp_Bad "Temperatur Bad" [stateTopic="shellyplusi4-Bad-24/status/temperature:100", transformationPattern="JSONPATH:$.tC"] 
+    // Luftfeuchte
+    Type number : Feuchte_WC "Luftfeuchtigkeit WC" [stateTopic="shellyplusi4-WC-10/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Flur "Luftfeuchtigkeit Flur" [stateTopic="shellyplusi4-Flur-EG-12/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Wohnen "Luftfeuchtigkeit Wohnen" [stateTopic="shellyplusi4-Wohnen-14/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_HWR "Luftfeuchtigkeit HWR" [stateTopic="shellyplusi4-HWR-13/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Zimmer1 "Luftfeuchtigkeit Zimmer 1" [stateTopic="shellyplusi4-Zimmer1-21/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Zimmer2 "Luftfeuchtigkeit Zimmer 2" [stateTopic="shellyplusi4-Zimmer2-22/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Schlafen "Luftfeuchtigkeit Schlafen" [stateTopic="shellyplusi4-Schlafen-23/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    Type number : Feuchte_Bad "Luftfeuchtigkeit Bad" [stateTopic="shellyplusi4-Bad-24/status/humidity:100", transformationPattern="JSONPATH:$.rh"]
+    // Bewegung
+    Type number : Bewegung_Flur "Bewegung Flur" [stateTopic="shellyplusi4-Flur-EG-12/status/voltmeter:100", transformationPattern="JSONPATH:$.voltage"]
+    Type number : Bewegung_HWR "Bewegung HWR" [stateTopic="shellyplusi4-HWR-13/status/voltmeter:100", transformationPattern="JSONPATH:$.voltage"]
+}

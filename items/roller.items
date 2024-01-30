@@ -1,0 +1,4 @@
+Rollershutter      Rollo_Wohnen         "Rollo Wohnen"      <rollershutter>     (Erdgeschoss, Rollos)   { channel="shelly:shellyplus2pm-roller:XXXX30:roller#control" }
+Rollershutter      Rollo_Bad            "Rollo Bad"         <rollershutter>     (Dachgeschoss, Rollos)   { channel="shelly:shellyplus2pm-roller:XXXX31:roller#control" }
+String             Rollo_Wohnen_State  "Rollo Status Wohnen"      <rollershutter>     (Erdgeschoss, Rollos)   { channel="shelly:shellyplus2pm-roller:XXXX30:roller#state" }
+String             Rollo_Bad_State     "Rollo Status Bad"         <rollershutter>     (Dachgeschoss, Rollos)   { channel="shelly:shellyplus2pm-roller:XXXX31:roller#state" }
